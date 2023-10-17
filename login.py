@@ -26,36 +26,36 @@ def trial():
 def loginuser():
     username = user.get()
     password = code.get()
-    
+
     if (username == '' or username == 'Username') or (password=='' or password == 'Password'):
         messagebox.showerror('Entry Error', 'Type username & Password!')
-        
+
     else:
-        
+
         try:
-            mydb=mysql.connector.connect(host='localhost', user='root', password='nil@2001', database='studentregistration')
+            mydb=mysql.connector.connect(host='localhost', user='root', password='your-mysql-password', database='studentregistration')
             mycursor=mydb.cursor()
             print('Connected To Database')
         except:
             messagebox.showerror('Connection', 'Database connection not stablish!')
             return
-        
+
         command="use studentregistration"
         mycursor.execute(command)
-        
+
         command ='select * from login where Username=%s and Password=%s'
         mycursor.execute(command,(username, password))
         myresult=mycursor.fetchone()
         print(myresult)
-        
+
         if myresult==None:
             messagebox.showerror('Invalid', 'Invalid username & Password!')
-            
+
             trial()
         else:
             root.destroy()
             import main
-    
+
 
 def register():
     root.destroy()

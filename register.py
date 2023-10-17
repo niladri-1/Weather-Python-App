@@ -30,7 +30,7 @@ def register():
 
         else:
             try:
-                mydb = mysql.connector.connect(host="localhost", user="root", password="nil@2001")
+                mydb = mysql.connector.connect(host="localhost", user="root", password="your-mysql-password")
                 mycursor=mydb.cursor()
                 print("Connection Stablished!")
 
